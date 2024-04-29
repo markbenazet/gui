@@ -33,11 +33,6 @@ class SSHClient:
 
     def close(self):
         self.client.close()
-
-def start_recording():
-    global ssh_client
-    threading.Thread(target=ssh_client.execute_command, args=('libcamera-vid -t 0 --framerate 30 --autofocus-mode continuous --width 2048 --height 1080 -o "/home/noctua_raspi/Videos/$(date +%Y%m%d_%H%M.h264)"',)).start()
-
 def stop_recording():
     global ssh_client
     ssh_client.execute_command("killall -SIGINT libcamera-vid")
@@ -99,16 +94,16 @@ if __name__ == "__main__":
     connect_button = tk.Button(root, text="Connect SSH", command=connect_ssh)
     connect_button.grid(row=3, column=0)
 
-    start_button = tk.Button(root, text="Start Recording", command=start_recording, state=tk.HIDDEN)
+    start_button = tk.Button(root, text="Start Recording", command=start_recording, state=tk.DISABLED)
     start_button.grid(row=4, column=0)
 
-    stop_button = tk.Button(root, text="Stop Recording", command=stop_recording, state=tk.HIDDEN)
+    stop_button = tk.Button(root, text="Stop Recording", command=stop_recording, state=tk.DISABLED)
     stop_button.grid(row=4, column=1)
 
-    run_button = tk.Button(root, text="Run File", command=run_file, state=tk.HIDDEN)
+    run_button = tk.Button(root, text="Run File", command=run_file, state=tk.DISABLED)
     run_button.grid(row=5, column=0)
 
-    close_button = tk.Button(root, text="Close SSH", command=close_ssh, state=tk.HIDDEN)
+    close_button = tk.Button(root, text="Close SSH", command=close_ssh, state=tk.DISABLED)
     close_button.grid(row=6, column=0)
 
     root.mainloop()
