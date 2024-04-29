@@ -33,6 +33,11 @@ class SSHClient:
 
     def close(self):
         self.client.close()
+
+def start_recording():
+    global ssh_client
+    threading.Thread(target=ssh_client.execute_command, args=('libcamera-vid -t 0 --framerate 30 --autofocus-mode continuous --width 2048 --height 1080 -o "/home/noctua_raspi/Videos/$(date +%Y%m%d_%H%M.h264)"',)).start()
+    
 def stop_recording():
     global ssh_client
     ssh_client.execute_command("killall -SIGINT libcamera-vid")
