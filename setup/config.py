@@ -1,0 +1,7 @@
+VIDEO_URL = "http://172.29.245.218:8080/?action=stream"
+VIDEOS_DIR = "../Videos"
+PICTURES_DIR = "../Pictures"
+FRAME_WIDTH = 640
+FRAME_HEIGHT = 480
+FRAME_RATE = 20.0
+VIDEO_CODEC = "XVID"
