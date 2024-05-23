@@ -69,7 +69,6 @@ class VideoRecorderApp:
             if not self.cap.isOpened():
                 raise Exception("Could not open video stream.")
         except Exception as e:
-            logging.error("Error initializing video capture: %s", e)
             messagebox.showerror("Error", "Could not open video stream.")
             self.root.quit()
 
@@ -124,7 +123,6 @@ class VideoRecorderApp:
                 self.is_recording = False
                 print("Recording stopped.")
         except Exception as e:
-            logging.error("Error during recording toggle: %s", e)
             messagebox.showerror("Error", "An error occurred during recording.")
 
     def capture_picture(self):
@@ -135,7 +133,6 @@ class VideoRecorderApp:
                 cv2.imwrite(filename, frame)
                 print(f"Picture captured: {filename}")
         except Exception as e:
-            logging.error("Error capturing picture: %s", e)
             messagebox.showerror("Error", "An error occurred while capturing the picture.")
 
 
@@ -161,7 +158,6 @@ class VideoRecorderApp:
                     cv2.putText(frame, timestamp, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2, cv2.LINE_AA)
                     self.out.write(cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR))
         except Exception as e:
-            logging.error("Error updating frame: %s", e)
             messagebox.showerror("Error", "An error occurred while updating the frame.")
 
         self.root.after(10, self.update)
