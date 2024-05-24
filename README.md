@@ -16,8 +16,8 @@ This application captures video from an HTTP stream and allows you to start and 
 ## Installation
 1. Clone the repository:
     ```sh
-    git clone <repository-url>
-    cd <repository-directory>
+    git clone https://github.com/markbenazet/live-feed.git
+    cd live-feed
     ```
 
 2. Navigate to the `setup` folder and install the required dependencies:
